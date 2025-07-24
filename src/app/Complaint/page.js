@@ -204,7 +204,7 @@ export default function Complaint() {
   };
 
   // Handler for form submission
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     setGlobalNotification({ message: "", type: "" }); // Clear any previous global notification
 
@@ -226,14 +226,33 @@ export default function Complaint() {
     setErrors({});
 
     try {
+      // **الخطوة الأولى: إنشاء نسخة من بيانات الطلب لتعديلها**
+      let requestDataToSend = { ...formData.request };
+
+      // **الخطوة الثانية: التحقق من نوع الطلب وحذف concerned_entities إذا لم يكن مطلوبًا**
+      // في حالتك، أنواع الطلبات 1 و 3 هي التي تتطلب هذا الحقل.
+      const requiresConcernedEntities = ["1", "3"].includes(
+        requestDataToSend.request_type_id
+      );
+
+      if (!requiresConcernedEntities) {
+        delete requestDataToSend.concerned_entities;
+      }
+
+      // **الخطوة الثالثة: تجهيز البيانات النهائية للإرسال**
+      const finalFormData = {
+        applicant: formData.applicant,
+        request: requestDataToSend, // استخدام الكائن المعدل هنا
+      };
+
       // Prepare data for API call
       const arr = {
-        data: JSON.stringify(formData),
+        data: JSON.stringify(finalFormData),
         attachments: Attachments,
       };
 
       // Send data to the API
-      await addData("/requests", arr);
+      await addData("/requests/store", arr);
 
       // On successful submission, update state to show success popup and reset form
       setSubmitted(true);
@@ -314,7 +333,7 @@ export default function Complaint() {
         console.error("حدث خطأ غير متوقع أثناء إرسال الشكوى:", error.message);
       }
     }
-  };
+};
 
   return (
     <div>
