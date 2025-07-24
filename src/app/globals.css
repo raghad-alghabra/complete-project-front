@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+/* Import Google Fonts */
+
+/* CSS Variables */
+:root {
+  --background: #eeeeee;
+  --foreground: #171717;
+  --primary-color: #3da67e;
+}
+
+/* Optional dark mode (you can enhance this later) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #eeeeee;
+    --foreground: #171717;
+  }
+}
+
+/* Base Styles */
+body {
+  color: var(--foreground);
+  background: transparent;
+  font-family: var(--font-ibm-arabic);
+  direction: rtl;
+  /* For right-to-left support */
+}
+
+/* Keyframe animation */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* Custom page class */
+/* .page {
+  background-image: url('/batern.png');
+  background-size: contain;
+} */
+
+.form-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.css-rizt0-MuiTypography-root {
+  font-family: unset;
+  font-weight: 700;
+}
+
+.form1 .item-input {
+  width: 100%;
+  background-color: #d9d9d9;
+  border: 3px solid #3da67e;
+  border-radius: 18px;
+  height: 50px;
+  padding: 0rem 1rem;
+}
+
+select {
+  width: 100%;
+  background-color: #d9d9d9;
+  border: 3px solid #3da67e;
+  border-radius: 8px;
+  height: 50px;
+  padding: 0rem 1rem;
+}
+
+.form1 .item-input::placeholder {
+  color: #7f8c8d; /* لون أغمق قليلاً من العام، لتمييزها */
+  font-style: italic; /* لجعلها مائلة، أو normal إذا كنت لا تريدها مائلة */
+  font-weight: normal;
+}
+
+.form1 .item-input option {
+  color: black;
+  font-weight: bold;
+}
+
+.form1 .item-textarea {
+  width: 100%;
+  background-color: #d9d9d9;
+  border: 3px solid #3da67e;
+  border-radius: 18px;
+  height: 150px;
+  padding: 1rem;
+}
+
+.form1 .item-textarea::placeholder {
+  color: #7f8c8d; /* لون أغمق قليلاً من العام، لتمييزها */
+  font-style: italic; /* لجعلها مائلة، أو normal إذا كنت لا تريدها مائلة */
+  font-weight: normal;
+}
+.form1 .item-input:focus {
+  outline: none; /* إزالة الـ outline الافتراضي للمتصفح إذا كان موجودًا */
+  border-color: #000; /* تغيير لون الحدود عند التركيز */
+}
+.group-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-item input {
+  width: 200px;
+  background-color: #d9d9d9;
+  border: 3px solid #3da67e;
+  margin-top: 1rem;
+  border-radius: 18px;
+  height: 50px;
+  padding: 0rem 1rem;
+}
+
+.group-item button {
+  width: 200px;
+  background-color: #d9d9d9;
+  border: 3px solid #3da67e;
+  margin-top: 1rem;
+  border-radius: 18px;
+  height: 50px;
+  padding: 0rem 1rem;
+  transition: 0.4s;
+}
+
+.group-item button:hover {
+  background-color: #77bd1d;
+  border: 3px solid #3da67e;
+}
+
+.form-body {
+  border: #3da67e95 dashed 3px;
+  margin: 0.5rem 0rem 1rem 0rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  top: -13px;
+  right: 26px;
+  background: #eee;
+  padding: 0rem 1rem;
+  font-weight: 700;
+  border: 3px solid #3da67e;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* خصائص إضافية لتخصيص السلايدر في react-slick */
+
+/* إخفاء الأسهم الافتراضية لمنع ظهور 4 أسهم */
+.slick-prev:before,
+.slick-next:before {
+  content: none !important;
+}
+
+/* إخفاء شريط السكرول الأفقي */
+.slick-list {
+  overflow: hidden !important;
+}
+
+/* تنسيق الأسهم المخصصة (أسهم FaChevronLeft و FaChevronRight) */
+.slick-prev.slick-arrow.arrow-prev,
+.slick-next.slick-arrow.arrow-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  /* تحريك الأسهم إلى اليسار واليمين */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* التعديل الرئيسي هنا: تبديل أماكن الأسهم لتناسب اللغة العربية */
+.slick-prev.slick-arrow.arrow-prev {
+  right: 20px; /* السهم السابق الآن في اليمين */
+}
+
+.slick-next.slick-arrow.arrow-next {
+  left: 20px; /* السهم التالي الآن في اليسار */
+}
+/* إخفاء نقاط السلايدر */
+.slick-dots {
+  display: none !important;
+}
+.text-gray-700 {
+  margin: 10px !important;
+}
+/* تنسيق قسم سلة المحذوفات  */
+/* في ملف globals.css */
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-4px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+}

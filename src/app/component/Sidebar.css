@@ -1,0 +1,38 @@
+.sid-bare{
+    width: 350px;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    height: auto;
+    background-color: #d6d6d6;
+    overflow: auto;
+}
+
+.item-sidebar{
+    padding: 10px;
+    cursor: pointer;
+    margin: 1rem 0rem;
+    color: #ffffff;
+    border-radius: 8px;
+    transition: 0.4s;
+}
+.item-sidebar:hover{
+    background-color: #0f5b3e !important;
+}
+.item-sidebar span{
+    transition: 0.4s;
+}
+.submenu{
+    margin: -0.5rem 0rem 1rem 0rem;
+}
+.item-subbar{
+    padding: 5px 30px;
+    margin: 0.25rem 0.5rem 0.25rem 0.5rem ;
+    cursor: pointer;
+    color: #000;
+    border-radius: 8px;
+    transition: 0.4s;
+}
+.item-subbar:hover{
+    background-color: #0f5b3e !important;
+    color: #fff;
+}

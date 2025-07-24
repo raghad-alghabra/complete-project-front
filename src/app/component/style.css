@@ -1,0 +1,161 @@
+/* حركات الانسحاب */
+.header-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-visible {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* الكلاس الافتراضي */
+.header-default {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.gallery-container {
+  display: flex;
+  gap: 1rem; /* المسافة بين الأعمدة */
+  margin: 0 auto;
+  max-width: 1200px; /* عرض الحاوية */
+}
+
+.gallery-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* المسافة بين الصور في العمود */
+}
+
+.gallery-image {
+  width: 100%; /* عرض الصورة يتناسب مع عرض العمود */
+  height: auto; /* ارتفاع الصورة الطبيعي */
+  border-radius: 8px; /* حدود ناعمة */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  transition: filter 0.2s ease; /* تأثير ناعم عند الهوفر */
+  filter: grayscale(1); /* تحويل الصورة لتدرج رمادي */
+  scale: 1;
+  transition: 0.2s ease;
+}
+
+.image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: #43790c77;*/
+  mix-blend-mode: color; /* دمج اللون مع الصورة */
+  pointer-events: none; /* السماح بالتفاعل مع الصورة */
+  transition: opacity 0.2s ease; /* تأثير ناعم عند الهوفر */
+  opacity: 1; /* جعل اللون مرئيًا */
+}
+
+.image-container img:hover {
+  filter: none; /* إظهار الصورة الأصلية عند الهوفر */
+  scale: 1.05;
+  transition: scale 0.2s ease;
+}
+
+.image-container:hover::after {
+  opacity: 0; /* إخفاء اللون عند الهوفر */
+}
+.icon:hover {
+  scale: 1.1;
+  transition: 0.1s ease-in-out;
+}
+
+.navbar-link {
+  position: relative;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333; /* لون الخط العادي */
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: #3da67e; /* لون الخط الأخضر تحت الرابط */
+  transform: scaleX(0); /* جعل الخط مخفياً في البداية */
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.navbar-link:hover::after {
+  transform: scaleX(1); /* إظهار الخط عند الهوفر */
+  transform-origin: bottom left;
+}
+
+/* تنسيقات القائمة عند الهوفر في وضع الموبايل */
+.mobile-menu-container {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+  background-color: #2b8264;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu-container.open {
+  max-height: 700px; /* يمكن تعديل القيمة حسب المحتوى */
+}
+
+.mobile-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* مسافة بين الروابط */
+  padding: 2rem 0;
+}
+
+/* تنسيق روابط القائمة في وضع الموبايل */
+.navbar-link-mobile {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff; /* لون الخط أبيض */
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-link-mobile:hover {
+  transform: translateY(-3px); /* تأثير تحريك بسيط للأعلى */
+  color: #c0fcd1; /* لون أخضر فاتح عند الهوفر */
+}
+
+/* تأثير الهوفر المميز في الموبايل */
+.navbar-link-mobile::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #fceb9c; /* لون ذهبي أو أصفر جذاب */
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
+}
+
+.navbar-link-mobile:hover::after {
+  transform: scaleX(1);
+}
